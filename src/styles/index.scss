@@ -20,6 +20,10 @@ code {
   .textarea-field {
     height: 100px;
   }
+
+  .comments__textarea {
+    height: 110px;
+  }
 } 
 
 .app__add-article {
@@ -71,4 +75,27 @@ code {
   border-radius: 50%;
 }
 
+.article__theme {
+  display: inline-block;
+  margin-bottom: 24px;
 
+  font-size: 12px;
+}
+
+.article__date {
+  display: flex;
+  align-items: center;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+}
+
+.comments__line {
+  border-top: 2px solid #6c757d;
+}
+
+.comments__box {
+  font-size: 14px;
+}

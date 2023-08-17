@@ -11,6 +11,7 @@ import {
 
 import {
   Root,
+  Article,
   AddArticleForm,
   NoMatchPage,
 } from './components/routes/reactRouters.js';
@@ -26,6 +27,7 @@ const App = () => (
     <Router>
       <Routes>
         <Route path={urls.root} element={(<Root />)} />
+        <Route path={urls.article} element={(<Article />)} />
         <Route path={urls.addNewArticle} element={(<AddArticleForm />)} />
         <Route path={urls.editArticle} element={(<AddArticleForm />)} />
         <Route path={urls.noMatch} element={<NoMatchPage />} />

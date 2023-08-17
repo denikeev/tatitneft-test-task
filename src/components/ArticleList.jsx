@@ -38,6 +38,7 @@ const ArticleList = ({ props: { articles } }) => {
               </Button>
             </OverlayTooltip>
           </div>
+          <Link className="stretched-link" to={`/articles/${article.id}`} />
         </Card>
       ))}
     </div>
