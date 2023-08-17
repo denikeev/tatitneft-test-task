@@ -1,48 +1,20 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Card, Button } from 'react-bootstrap';
-import OverlayTooltip from './OverlayTooltip.jsx';
-import { BsPencil, BsTrash } from 'react-icons/bs';
-import { removeArticle } from '../slices/articlesSlice.js';
+import { Card } from 'react-bootstrap';
+import ArticleActions from './ArticleActions.jsx';
 
-const ArticleList = ({ props: { articles } }) => {
-  const dispatch = useDispatch();
-
-  return (
-    <div className="articles__list">
-      {articles.map((article) => (
-        <Card className="shadow-sm articles__item" key={article.id}>
-          <h6>{article.title}</h6>
-          <span className="articles__text">{article.text}</span>
-          <div className="articles__actions">
-            <OverlayTooltip text="Edit">
-              <Button
-                as={Link}
-                to={`/articles/${article.id}/edit`}
-                className="articles__action mb-2"
-                variant="link"
-                aria-label="edit"
-              >
-                <BsPencil className="text-secondary fs-5" />
-              </Button>
-            </OverlayTooltip>
-            <OverlayTooltip text="Remove">
-              <Button
-                className="articles__action"
-                variant="link"
-                onClick={() => dispatch(removeArticle(article.id))}
-                aria-label="remove"
-              >
-                <BsTrash className="text-secondary fs-5" />
-              </Button>
-            </OverlayTooltip>
-          </div>
-          <Link className="stretched-link" to={`/articles/${article.id}`} />
-        </Card>
-      ))}
-    </div>
-  );
-};
+const ArticleList = ({ props: { articles } }) => (
+  <div className="articles">
+    {articles.map((article) => (
+      <Card className="articles__item" key={article.id}>
+        <h2 className="articles__title">{article.title}</h2>
+        <span className="badge text-bg-dark article__theme me-auto mb-2">{article.theme}</span>
+        <span className="articles__text">{article.text}</span>
+        <ArticleActions articleId={article.id} />
+        <Link className="stretched-link" to={`/articles/${article.id}`} />
+      </Card>
+    ))}
+  </div>
+);
 
 export default ArticleList;

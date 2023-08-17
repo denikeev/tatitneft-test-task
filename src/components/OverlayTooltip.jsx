@@ -20,7 +20,7 @@ const OverlayTooltip = (props) => {
   const { text, children } = props;
   return (
     <OverlayTrigger
-      placement="left"
+      placement="top"
       delay={{ show: 350, hide: 400 }}
       overlay={renderTooltip(text)}
     >

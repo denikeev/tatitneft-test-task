@@ -14,10 +14,16 @@ const articlesSlice = createSlice({
       const normalizedData = payload.map((v) => ({ ...v, id: uniqueId() }));
       articlesAdapter.addMany(state, normalizedData);
     },
+    editArticle: articlesAdapter.updateOne,
     removeArticle: articlesAdapter.removeOne,
   },
 });
 
 export default articlesSlice.reducer;
-export const { addArticle, getArticles, removeArticle } = articlesSlice.actions;
+export const {
+  addArticle,
+  getArticles,
+  removeArticle,
+  editArticle,
+} = articlesSlice.actions;
 export const articlesSelector = articlesAdapter.getSelectors((state) => state.articles);

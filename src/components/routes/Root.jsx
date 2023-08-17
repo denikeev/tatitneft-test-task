@@ -24,12 +24,10 @@ const Root = () => {
   };
 
   return (
-    <Container className="my-3">
-      <h1>Articles</h1>
-      <hr />
-      <Row className="gy-3 mb-3">
+    <>
+      <Row className="gy-3 mb-3 mb-lg-5">
         <Col className="order-lg-1" xs={12} lg={4}>
-          <Button className="app__add-article" variant="primary" as={Link} to={urls.addNewArticle}>Добавить статью</Button>
+          <Button className="w-100" variant="primary" as={Link} to={urls.addNewArticle}>Добавить статью</Button>
         </Col>
         <Col className="d-flex" xs={12} lg={8}>
           <Form.Control onChange={(e) => setSearchInput(e.target.value)} value={searchInput} type="search" placeholder="Поиск..." />
@@ -45,7 +43,7 @@ const Root = () => {
           />
         )
         : (<ArticleList props={{ articles }} />)}
-    </Container>
+    </>
   );
 };
 

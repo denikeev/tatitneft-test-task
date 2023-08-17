@@ -15,8 +15,8 @@ const CommentsBox = ({ articleId }) => {
   };
 
   return (
-    <div className="comments mt-5">
-      <strong>Комментариев</strong>
+    <div className="comments mt-4">
+      <strong>Комментарии</strong>
       <hr className="comments__line" />
       <FloatingLabel controlId="text" label="Оставить комментарий..." className="mb-4">
         <Form.Control
@@ -29,9 +29,9 @@ const CommentsBox = ({ articleId }) => {
           autoComplete="text"
         />
       </FloatingLabel>
-      <Button onClick={handleComment} className="ms-md-auto" variant="primary" type="button">Комментировать</Button>
+      <Button onClick={handleComment} className="ms-md-auto mb-3" variant="primary" type="button">Комментировать</Button>
       <div className="comments__box">
-        {comments.map((comment) => <p key={comment.id}>{comment.text}</p>)}
+        {comments.map((comment) => <p className="bg-body-tertiary rounded-4 p-3" key={comment.id}>{comment.text}</p>)}
       </div>
     </div>
   );

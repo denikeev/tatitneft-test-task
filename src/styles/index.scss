@@ -1,5 +1,6 @@
 html {
   overflow-x: hidden;
+  margin-right: calc(-1 * (100vw - 100%));
 }
 
 body {
@@ -26,24 +27,27 @@ code {
   }
 } 
 
-.app__add-article {
-  width: 100%;
-}
-
-.articles__list {
+.articles {
   display: flex;
   flex-direction: column;
   row-gap: 8px;
 }
 
 .articles__item {
-  min-height: 112px;
   padding: 8px;
+
+  &:hover {    
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  }
+}
+
+.articles__title {
+  font-size: 18px;
 }
 
 .articles__text {
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 
   overflow: hidden;
@@ -56,8 +60,8 @@ code {
   right: 8px;
 
   display: flex;
-  flex-direction: column;
   align-items: center;
+  column-gap: 8px;
 }
 
 .articles__action {
@@ -110,5 +114,27 @@ code {
   .btn-link {
     padding: 0;
     font-size: 14px;
+  }
+}
+
+@media (min-width: 992px) {
+  .articles {
+    row-gap: 16px;
+  }
+
+  .articles__actions {
+    column-gap: 12px;
+  }
+
+  .articles__title {
+    font-size: 24px;
+  }
+
+  .articles__text {
+    font-size: 18px;
+  }
+
+  .article__text {
+    font-size: 18px;
   }
 }

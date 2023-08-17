@@ -1,24 +1,26 @@
 import React, { useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import { Form, Button, FloatingLabel } from 'react-bootstrap';
 import { useFormik } from 'formik';
 import { string, object } from 'yup';
-import { addArticle } from '../../slices/articlesSlice.js';
+import { editArticle, articlesSelector } from '../../slices/articlesSlice.js';
 import urls from '../../urls.js';
 
-const AddArticleForm = () => {
+const EditArticleForm = () => {
   const inputRef = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { id } = useParams();
+  const article = useSelector((state) => articlesSelector.selectById(state, id));
 
   const formik = useFormik({
     initialValues: {
-      title: '',
-      text: '',
-      theme: '',
-      author: '',
-      date: '',
+      title: article.title,
+      text: article.text,
+      theme: article.theme,
+      author: article.author,
+      date: article.date,
     },
     validationSchema: object({
       title: string().required('Обязательное поле'),
@@ -28,7 +30,7 @@ const AddArticleForm = () => {
       date: string().required('Обязательное поле'),
     }),
     onSubmit: (data) => {
-      dispatch(addArticle(data));
+      dispatch(editArticle({ id: article.id, changes: data }));
       navigate(urls.root);
     },
   });
@@ -39,7 +41,7 @@ const AddArticleForm = () => {
 
   return (
     <>
-      <h1>Создание статьи</h1>
+      <h1>Редактирование статьи</h1>
       <Form onSubmit={formik.handleSubmit} className="">
         <fieldset>
           <FloatingLabel controlId="title" label="Заголовок" className="mb-3">
@@ -106,7 +108,7 @@ const AddArticleForm = () => {
             />
             <Form.Control.Feedback type="invalid" tooltip>{formik.errors.date}</Form.Control.Feedback>
           </FloatingLabel>
-          <Button variant="outline-primary" className="w-100 mb-3" type="submit">Создать</Button>
+          <Button variant="outline-primary" className="w-100 mb-3" type="submit">Изменить</Button>
           <Button as={Link} to={urls.root} variant="outline-primary" className="w-100">Отмена</Button>
         </fieldset>
       </Form>
@@ -114,4 +116,4 @@ const AddArticleForm = () => {
   );
 };
 
-export default AddArticleForm;
+export default EditArticleForm;
