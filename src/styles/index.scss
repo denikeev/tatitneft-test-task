@@ -73,6 +73,10 @@ code {
   box-shadow: 0 0.1875rem 0.625rem rgba(0,0,0,.15);
   border: 0;
   border-radius: 50%;
+
+  &:hover {
+    background-color: #fff;
+  }
 }
 
 .article__theme {
@@ -98,4 +102,13 @@ code {
 
 .comments__box {
   font-size: 14px;
+}
+
+.not-found {
+  font-size: 14px;
+  
+  .btn-link {
+    padding: 0;
+    font-size: 14px;
+  }
 }

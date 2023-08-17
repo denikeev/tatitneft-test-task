@@ -18,7 +18,6 @@ const formatDate = (date) => {
 const Article = () => {
   const { id } = useParams();
   const article = useSelector((state) => articlesSelector.selectById(state, id));
-  console.log('arti>', article);
 
   return (
     <Container className="my-3">

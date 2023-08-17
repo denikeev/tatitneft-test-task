@@ -8,7 +8,6 @@ const CommentsBox = ({ articleId }) => {
   const [commentValue, setComment] = useState('');
   const allComments = useSelector(commentsSelector.selectAll);
   const comments = allComments.filter((comment) => comment.articleId === articleId);
-  console.log('com>', comments);
 
   const handleComment = () => {
     dispatch(addComment({ text: commentValue, articleId }));
