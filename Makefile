@@ -10,3 +10,6 @@ lint:
 build:
 	rm -rf build
 	NODE_ENV=production npx webpack
+
+deploy:
+	npm run deploy

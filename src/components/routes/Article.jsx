@@ -1,11 +1,18 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
-import { BsCalendar3 } from 'react-icons/bs';
+import { useParams, Link } from 'react-router-dom';
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+} from 'react-bootstrap';
+import { BsCalendar3, BsArrowLeft } from 'react-icons/bs';
 import CommentsBox from '../CommentsBox.jsx';
 import ArticleActions from '../ArticleActions.jsx';
+import OverlayTooltip from '../OverlayTooltip.jsx';
 import { articlesSelector } from '../../slices/articlesSlice.js';
+import urls from '../../urls.js';
 
 const formatDate = (date) => {
   const [year, day, month] = date.split('-');
@@ -15,6 +22,20 @@ const formatDate = (date) => {
 
   return formattedDate;
 };
+
+const BackButton = () => (
+  <OverlayTooltip text="Назад">
+    <Button
+      as={Link}
+      to={urls.root}
+      className="articles__action"
+      variant="link"
+      aria-label="назад"
+    >
+      <BsArrowLeft className="text-secondary fs-5" />
+    </Button>
+  </OverlayTooltip>
+);
 
 const Article = () => {
   const { id } = useParams();
@@ -35,7 +56,9 @@ const Article = () => {
             {formatDate(article.date)}
           </div>
           <CommentsBox articleId={id} />
-          <ArticleActions articleId={article.id} />
+          <ArticleActions articleId={article.id}>
+            <BackButton />
+          </ArticleActions>
         </Col>
       </Row>
     </Container>

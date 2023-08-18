@@ -7,11 +7,12 @@ import OverlayTooltip from './OverlayTooltip.jsx';
 import { removeArticle } from '../slices/articlesSlice.js';
 import urls from '../urls.js';
 
-const ArticleActions = ({ articleId }) => {
+const ArticleActions = ({ articleId, children }) => {
   const dispatch = useDispatch();
 
   return (
     <div className="articles__actions">
+      {children}
       <OverlayTooltip text="Изменить статью">
         <Button
           as={Link}
