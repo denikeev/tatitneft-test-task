@@ -2,8 +2,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
-import OverlayTooltip from './OverlayTooltip.jsx';
 import { BsPencil, BsTrash } from 'react-icons/bs';
+import OverlayTooltip from './OverlayTooltip.jsx';
 import { removeArticle } from '../slices/articlesSlice.js';
 import urls from '../urls.js';
 
